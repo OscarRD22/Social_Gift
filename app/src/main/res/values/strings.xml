@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">SocialGift</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="password"> Contraseña</string>
+    <string name="email">  E-mail</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="login_text">Inicia sesión para entrar a tu cuenta:</string>
+    <string name="login_text_newAcount">¿No tienes una cuenta? Crear</string>
+    <string name="login_newPassword">Olvidaste tu contraseña?</string>
+    <string name="register_createAcount">Crea tu cuenta:</string>
+    <string name="btn_register">REGISTRARSE</string>
+    <string name="register_password"> Confirmar Nueva Contraseña</string>
+    <string name="change_password"> Nueva Contraseña</string>
+    <string name="actual_password">  Contraseña Actual</string>
+    <string name="btn_change_password"> CAMBIAR CONTRASEÑA</string>
+    <string name="btn_save_profile"> GUARDAR</string>
+    <string name="change_pass"> Cambiar contraseña</string>
+    <string name="btn_ver">Ver</string>
+    <string name="name">Nombre</string>
+    <string name="lastName">Apellido</string>
+    <string name="editProfile">Editar perfil</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="wishListName">Nombre de lista: %1$s</string>
+    <string name="wishListDescription">Descripcion: %1$s</string>
+    <string name="wishListInitialDate">Fecha Inicial: %1$s</string>
+    <string name="wishListEndDate">Fecha final: %1$s</string>
+    <string name="wishListNumberGift">Regalos: %1$d</string>
+
+
+</resources>

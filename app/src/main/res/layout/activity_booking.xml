@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".fragments.Friends">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="303dp"
+        android:layout_height="122dp"
+        android:src="@drawable/logo_app"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.026" />
+
+    <EditText
+        android:id="@+id/usernameEdit"
+        android:layout_width="369dp"
+        android:layout_height="145dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/box"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:inputType="text"
+        android:padding="40px"
+        android:textSize="90sp"
+        app:layout_constraintBottom_toTopOf="@+id/divider1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="329dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/usernameEdit"
+        android:layout_alignTop="@+id/usernameEdit"
+        android:layout_alignEnd="@+id/usernameEdit"
+        android:layout_alignBottom="@+id/usernameEdit"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="-74dp"
+        android:layout_marginBottom="83dp"
+        android:fontFamily="@font/roboto_condensed_bold"
+        android:text="SOCIAL GIFT TOP!"
+        android:textColor="@color/white"
+        android:textSize="65px"
+        app:layout_constraintBottom_toBottomOf="@+id/usernameEdit"
+        app:layout_constraintEnd_toEndOf="@+id/usernameEdit"
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/usernameEdit"
+        app:layout_constraintVertical_bias="0.133" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="342dp"
+        android:layout_height="36dp"
+        android:layout_alignStart="@+id/usernameEdit"
+        android:layout_alignTop="@+id/usernameEdit"
+        android:layout_alignEnd="@+id/usernameEdit"
+        android:layout_alignBottom="@+id/usernameEdit"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginEnd="-41dp"
+        android:layout_marginBottom="60dp"
+        android:fontFamily="@font/roboto_condensed_bold"
+        android:text="Las mejores listas &amp; regalos de la aplicacion"
+        android:textColor="@color/white"
+        android:textSize="43px"
+        app:layout_constraintBottom_toBottomOf="@+id/usernameEdit"
+        app:layout_constraintEnd_toEndOf="@+id/usernameEdit"
+        app:layout_constraintStart_toStartOf="@+id/usernameEdit"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/usernameEdit"
+        android:layout_alignTop="@+id/usernameEdit"
+        android:layout_alignEnd="@+id/usernameEdit"
+        android:layout_alignBottom="@+id/usernameEdit"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="86dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="11dp"
+        android:background="@drawable/btn_login"
+        android:text="VER"
+        app:layout_constraintBottom_toBottomOf="@+id/usernameEdit"
+        app:layout_constraintEnd_toEndOf="@+id/usernameEdit"
+        app:layout_constraintStart_toStartOf="@+id/usernameEdit"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView8"
+        android:layout_below="@+id/usernameEdit"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="102dp"
+        android:text="Regalos mas vistos"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameEdit"
+        app:layout_constraintVertical_bias="0.135" />
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:outlineAmbientShadowColor="@color/white"
+        tools:layout_editor_absoluteX="-27dp"
+        tools:layout_editor_absoluteY="374dp"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:outlineAmbientShadowColor="@color/white"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="518dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="188dp"
+        android:layout_height="36dp"
+        android:layout_alignStart="@+id/usernameEdit"
+        android:layout_alignEnd="@+id/usernameEdit"
+        android:layout_alignBottom="@+id/usernameEdit"
+        android:layout_marginStart="-26dp"
+        android:layout_marginEnd="168dp"
+        android:layout_marginBottom="-212dp"
+        android:text="Top 10 mejores listas:"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</RelativeLayout>

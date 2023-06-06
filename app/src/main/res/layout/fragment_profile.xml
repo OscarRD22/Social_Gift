@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profileEmail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".fragments.ProfileFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        tools:context=".fragments.ProfileFragment">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="-20dp"
+            android:src="@drawable/logo_app"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profile_picture"
+            android:layout_width="131dp"
+            android:layout_height="111dp"
+            android:layout_alignBottom="@+id/imageView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="141dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="139dp"
+            android:layout_marginBottom="-119dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/profile_picture" />
+
+
+
+
+        <TextView
+            android:id="@+id/editProfileFrag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="143dp"
+            android:layout_marginEnd="162dp"
+            android:layout_marginBottom="-280dp"
+            android:text="@string/editProfile"
+            android:textColor="#03A9F4"
+            android:textSize="45px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.39" />
+
+        <TextView
+            android:id="@+id/profileName"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_picture"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="104dp"
+            android:layout_marginTop="189dp"
+            android:layout_marginEnd="68dp"
+            android:layout_marginBottom="154dp"
+            android:drawableStart="@drawable/ic_profile"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+        <TextView
+            android:id="@+id/emailProfile"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_picture"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="109dp"
+            android:layout_marginTop="215dp"
+            android:layout_marginEnd="68dp"
+            android:layout_marginBottom="154dp"
+            android:drawableStart="@drawable/ic_email"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="188dp"
+            android:layout_height="36dp"
+            android:layout_alignBottom="@+id/edit_profile_picture_button"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="53dp"
+            android:layout_marginBottom="-266dp"
+            android:text="Mis listas:"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignBottom="@+id/textView8"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="-2dp"
+            android:layout_marginEnd="-216dp"
+            android:layout_marginBottom="12dp"
+            android:background="?android:attr/listDivider"
+            android:outlineAmbientShadowColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnLogOut"
+            android:layout_width="132dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/editProfileFrag"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="129dp"
+            android:layout_marginEnd="150dp"
+            android:layout_marginBottom="-58dp"
+            android:background="@drawable/btn_login"
+            android:text="Log Out" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RecyclerViewMyLists"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="551dp" />
+
+
+    </RelativeLayout>
+</ScrollView>
