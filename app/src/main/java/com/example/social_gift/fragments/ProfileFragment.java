@@ -183,5 +183,6 @@ public class ProfileFragment extends Fragment {
     public void onResume() {
         super.onResume();
         addData();
+
     }
 }
