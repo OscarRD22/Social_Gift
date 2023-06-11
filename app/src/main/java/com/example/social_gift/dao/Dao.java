@@ -27,6 +27,7 @@ public class Dao {
     String url = "https://balandrau.salle.url.edu/i3/socialgift/api/v1";
     String wishList_url = "/wishlists";
     String users = "/users";
+    String friends = "/friends";
 
     RequestQueue requestQueue;
     JSONObject jsonObject;
@@ -50,6 +51,21 @@ public class Dao {
         }
     }
 
+    public void enviarSolicitudAmistad(int idUsuario, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+        String urlSolicitudAmistad = url + friends + "/" + idUsuario;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, urlSolicitudAmistad, null, listener, errorListener) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + loadTokenSharedPreferences(context));
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
+
+
     public void registerUser(String name, String lastName, String email, String password, String img, Response.Listener<JSONObject> listenerLogin, Response.ErrorListener error) {
         String login = url + "/users";
         try {
@@ -71,6 +87,20 @@ public class Dao {
         String getUsersUrl = url + "/users";
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, getUsersUrl, null, listener, errorListener) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + loadTokenSharedPreferences(context));
+                return headers;
+            }
+        };
+        requestQueue.add(jsonArrayRequest);
+    }
+
+    public void getAllFriends(Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
+        String getAllFriendsUrl = url + users + friends;
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, getAllFriendsUrl, null, listener, errorListener) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();

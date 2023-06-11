@@ -91,12 +91,14 @@
             android:textColor="@color/white"
             android:textColorHint="@color/white" />
 
+
         <TextView
             android:id="@+id/textView8"
             android:layout_width="188dp"
             android:layout_height="36dp"
-            android:layout_alignBottom="@+id/edit_profile_picture_button"
+            android:layout_alignParentTop="true"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="511dp"
             android:layout_marginEnd="53dp"
             android:layout_marginBottom="-266dp"
             android:text="Mis listas:"
@@ -105,9 +107,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.058"
             app:layout_constraintStart_toStartOf="parent" />
-
-
-
 
         <View
             android:id="@+id/divider3"

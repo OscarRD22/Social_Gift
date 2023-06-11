@@ -121,6 +121,8 @@ public class FriendsFragment extends Fragment {
         });
     }
 
+
+
     private void cargarAmigos(Dao dao) {
         dao.getAllUsers(
                 new Response.Listener<JSONArray>() {
