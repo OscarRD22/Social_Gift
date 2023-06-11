@@ -26,6 +26,8 @@
     <string name="wishListInitialDate">Fecha Inicial: %1$s</string>
     <string name="wishListEndDate">Fecha final: %1$s</string>
     <string name="wishListNumberGift">Regalos: %1$d</string>
+    <string name="listasDE">Listas de: %1$s</string>
+    <string name="numSolicitudes">SOLICITUDES PENDIENTES: %1$d</string>
 
 
 </resources>

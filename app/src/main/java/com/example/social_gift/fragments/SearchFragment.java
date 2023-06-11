@@ -14,6 +14,7 @@ import android.widget.EditText;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
+import com.example.social_gift.Adapter.FriendAdapter;
 import com.example.social_gift.Adapter.UserAdapter;
 import com.example.social_gift.R;
 import com.example.social_gift.dao.Dao;
@@ -28,11 +29,10 @@ import java.util.ArrayList;
 
 public class SearchFragment extends Fragment {
 
-private RecyclerView RecyclerViewMyFriendsLists;
-    Dao dao;
-    UserAdapter userAdapter;
+    private RecyclerView RecyclerViewMyFriendsLists;
+    private Dao dao;
+    private FriendAdapter friendAdapter;
     private ArrayList<User> friendslist;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,19 +40,19 @@ private RecyclerView RecyclerViewMyFriendsLists;
         View view = inflater.inflate(R.layout.activity_booking, container, false);
 
         dao = new Dao(requireContext());
+        friendslist = new ArrayList<>(); // Inicializa la lista de amigos
+
         // Obtén la referencia al RecyclerView desde tu diseño XML
         RecyclerViewMyFriendsLists = view.findViewById(R.id.RecyclerViewMyFriendsLists);
         cargarAmigos(dao);
-        //setEdtSearchUser();
+
         return view;
     }
 
     private void cargarAmigos(Dao dao) {
-
         dao.getAllFriends(new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                // Procesa la lista de amigos recibida en la respuesta
                 try {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject userJson = response.getJSONObject(i);
@@ -74,7 +74,6 @@ private RecyclerView RecyclerViewMyFriendsLists;
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -84,13 +83,11 @@ private RecyclerView RecyclerViewMyFriendsLists;
         });
     }
 
-
     private void actualizarRecyclerView() {
         // Crea una instancia de UserAdapter con la lista de usuarios
-        userAdapter = new UserAdapter(friendslist, requireContext());
+        friendAdapter = new FriendAdapter(friendslist, requireContext());
         // Configura el RecyclerView con el UserAdapter
-        RecyclerViewMyFriendsLists.setAdapter(userAdapter);
+        RecyclerViewMyFriendsLists.setAdapter(friendAdapter);
         RecyclerViewMyFriendsLists.setLayoutManager(new LinearLayoutManager(requireContext()));
     }
-
 }

@@ -98,7 +98,7 @@ public class Dao {
     }
 
     public void getAllFriends(Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
-        String getAllFriendsUrl = url + users + friends;
+        String getAllFriendsUrl = url + friends;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, getAllFriendsUrl, null, listener, errorListener) {
             @Override
@@ -109,6 +109,37 @@ public class Dao {
             }
         };
         requestQueue.add(jsonArrayRequest);
+    }
+
+    public void getUserInfo(int userId, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+        String getUserUrl = url + "/users/" + userId;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, getUserUrl, null, listener, errorListener) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + loadTokenSharedPreferences(context));
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    public void getFriendWishlists(int userId, Response.Listener<JSONArray> successListener, Response.ErrorListener errorListener) {
+        String urlGetFriendWishlists = url + users + "/" + userId + "/wishlists";
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, urlGetFriendWishlists, null,
+                successListener,
+                errorListener) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + loadTokenSharedPreferences(context));
+                return headers;
+            }
+        };
+
+        requestQueue.add(request);
     }
 
 
@@ -204,7 +235,6 @@ public class Dao {
     }
 
 
-
     public void editWishList(int listId, String name, String description, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
         String editListUrl = url + wishList_url + "/" + listId;
         JSONObject requestBody = new JSONObject();
@@ -242,8 +272,6 @@ public class Dao {
     }
 
 
-
-
     public void getMyLists(Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
         String getListsUrl = url + users + "/" + loadIdSharedPreferences(context) + wishList_url;
 
@@ -256,6 +284,17 @@ public class Dao {
             }
         };
         requestQueue.add(jsonArrayRequest);
+    }
+
+    public void getFriendshipRequests(Response.Listener<JSONArray> successListener, Response.ErrorListener errorListener) {
+        String urlGetFriendshipRequests = url + friends + "/requests";
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, urlGetFriendshipRequests, null,
+                successListener,
+                errorListener);
+
+        // Add the request to the request queue
+        requestQueue.add(request);
     }
 
     //----------------------------------------------------LISTS---------------------------------------------------------//

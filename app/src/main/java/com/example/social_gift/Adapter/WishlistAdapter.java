@@ -9,15 +9,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.social_gift.R;
 import com.example.social_gift.model.WishList;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHolder>{
 
     private List<WishList> lists;
+
     private Context context;
 
     private LayoutInflater layoutInflater;
     WishlistAdapter.OnItemClick itemClick;
+
+    public void setWishlist(List<WishList> wishlist) {
+    }
+
 
     public interface OnItemClick{
         void onItemClickInterface(WishList wishList);
@@ -61,6 +68,8 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
     public int getItemCount() {
         return lists.size();
     }
+   
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textName, textDescription, textEndDate,textStartDate,numGift;
