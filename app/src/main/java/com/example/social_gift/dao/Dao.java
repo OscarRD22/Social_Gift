@@ -97,6 +97,23 @@ public class Dao {
         requestQueue.add(jsonArrayRequest);
     }
 
+
+    public void getAllRequests(Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
+        String getUsersRequestsUrl = url + friends + "/requests";
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, getUsersRequestsUrl, null, listener, errorListener) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + loadTokenSharedPreferences(context));
+                return headers;
+            }
+        };
+        requestQueue.add(jsonArrayRequest);
+    }
+
+
+
     public void getAllFriends(Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
         String getAllFriendsUrl = url + friends;
 

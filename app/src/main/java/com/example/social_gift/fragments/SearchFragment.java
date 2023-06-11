@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -33,7 +34,7 @@ public class SearchFragment extends Fragment {
     private Dao dao;
     private FriendAdapter friendAdapter;
     private ArrayList<User> friendslist;
-
+    TextView textSolicitudes;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,12 +42,29 @@ public class SearchFragment extends Fragment {
 
         dao = new Dao(requireContext());
         friendslist = new ArrayList<>(); // Inicializa la lista de amigos
+        textSolicitudes = view.findViewById(R.id.textSolicitudes);
 
         // Obtén la referencia al RecyclerView desde tu diseño XML
         RecyclerViewMyFriendsLists = view.findViewById(R.id.RecyclerViewMyFriendsLists);
         cargarAmigos(dao);
-
+        getSolicitudes();
         return view;
+    }
+
+
+    private void getSolicitudes(){
+        dao.getAllRequests(new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                textSolicitudes.setText(requireContext().getResources().getString(R.string.numSolicitudes, response.length()));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
     }
 
     private void cargarAmigos(Dao dao) {
