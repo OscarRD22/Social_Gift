@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 public class SolicitudesActivity extends AppCompatActivity {
 
     private RecyclerView RecyclerViewMySolicitudesLists;
+    TextView noSolicitudes;
     private Dao dao;
     private SolicitudAdapter solicitudAdapter;
     private ArrayList<User> friendsRequestList;
@@ -36,6 +39,7 @@ public class SolicitudesActivity extends AppCompatActivity {
         dao = new Dao(this);
         friendsRequestList = new ArrayList<>(); // Inicializa la lista de amigos
         RecyclerViewMySolicitudesLists = findViewById(R.id.RecyclerViewMySolicitudesLists);
+        noSolicitudes = findViewById(R.id.noSolicitudes);
         cargarAmigos(dao);
     }
 
@@ -74,10 +78,18 @@ public class SolicitudesActivity extends AppCompatActivity {
     }
 
     private void actualizarRecyclerView() {
-        // Crea una instancia de UserAdapter con la lista de usuarios
-        solicitudAdapter = new SolicitudAdapter(friendsRequestList, this);
-        // Configura el RecyclerView con el UserAdapter
-        RecyclerViewMySolicitudesLists.setAdapter(solicitudAdapter);
-        RecyclerViewMySolicitudesLists.setLayoutManager(new LinearLayoutManager(this));
+        if(friendsRequestList.isEmpty()){
+            noSolicitudes.setVisibility(View.VISIBLE);
+            RecyclerViewMySolicitudesLists.setVisibility(View.GONE);
+        }else{
+            noSolicitudes.setVisibility(View.GONE);
+            RecyclerViewMySolicitudesLists.setVisibility(View.VISIBLE);
+            // Crea una instancia de UserAdapter con la lista de usuarios
+            solicitudAdapter = new SolicitudAdapter(friendsRequestList,RecyclerViewMySolicitudesLists,noSolicitudes,this);
+            // Configura el RecyclerView con el UserAdapter
+            RecyclerViewMySolicitudesLists.setAdapter(solicitudAdapter);
+            RecyclerViewMySolicitudesLists.setLayoutManager(new LinearLayoutManager(this));
+        }
+
     }
 }

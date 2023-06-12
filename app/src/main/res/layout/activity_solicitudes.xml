@@ -27,12 +27,26 @@
         android:textColor="@color/white"
         android:textSize="20dp" />
 
+    <TextView
+        android:id="@+id/noSolicitudes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NO TIENES SOLICITUDES PENDIENTES"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:paddingTop="250dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerViewMySolicitudesLists"
         android:layout_width="match_parent"
-        android:layout_height="539dp"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:textAlignment="center" />
+        android:textAlignment="center">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </LinearLayout>

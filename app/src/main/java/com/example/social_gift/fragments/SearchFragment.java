@@ -2,24 +2,19 @@ package com.example.social_gift.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
-
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
 import com.example.social_gift.Adapter.FriendAdapter;
-import com.example.social_gift.Adapter.UserAdapter;
 import com.example.social_gift.R;
-import com.example.social_gift.activities.ProfileActivity;
 import com.example.social_gift.activities.SolicitudesActivity;
 import com.example.social_gift.dao.Dao;
 import com.example.social_gift.model.User;
@@ -38,13 +33,13 @@ public class SearchFragment extends Fragment {
     private FriendAdapter friendAdapter;
     private ArrayList<User> friendslist;
     TextView textSolicitudes;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_booking, container, false);
 
         dao = new Dao(requireContext());
-        friendslist = new ArrayList<>(); // Inicializa la lista de amigos
         textSolicitudes = view.findViewById(R.id.textSolicitudes);
 
         // Obtén la referencia al RecyclerView desde tu diseño XML
@@ -63,7 +58,7 @@ public class SearchFragment extends Fragment {
     }
 
 
-    private void getSolicitudes(){
+    private void getSolicitudes() {
         dao.getAllRequests(new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -79,9 +74,12 @@ public class SearchFragment extends Fragment {
     }
 
     private void cargarAmigos(Dao dao) {
+
         dao.getAllFriends(new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+                friendslist = new ArrayList<>(); // Inicializa la lista de amigos
+
                 try {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject userJson = response.getJSONObject(i);
@@ -118,5 +116,12 @@ public class SearchFragment extends Fragment {
         // Configura el RecyclerView con el UserAdapter
         RecyclerViewMyFriendsLists.setAdapter(friendAdapter);
         RecyclerViewMyFriendsLists.setLayoutManager(new LinearLayoutManager(requireContext()));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        cargarAmigos(dao);
+        getSolicitudes();
     }
 }

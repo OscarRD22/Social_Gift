@@ -29,10 +29,15 @@ import java.util.List;
 public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.ViewHolder>{
     private List<User> userList;
     private Context context;
+
+    RecyclerView RecyclerViewMySolicitudesLists;
+    TextView noSolicitudes;
     Dao dao;
-    public SolicitudAdapter(List<User> userList, Context context) {
+    public SolicitudAdapter(List<User> userList,RecyclerView RecyclerViewMySolicitudesLists,TextView noSolicitudes,Context context) {
         this.userList = userList;
         dao = new Dao(context);
+        this.RecyclerViewMySolicitudesLists = RecyclerViewMySolicitudesLists;
+        this.noSolicitudes = noSolicitudes;
         this.context = context;
     }
 
@@ -61,8 +66,14 @@ public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.View
                 dao.acceptFriendSolicitud(user.getId(), new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                    //FALTA HACER
-
+                        notifyItemRemoved(userList.indexOf(user));
+                        notifyItemRangeChanged(userList.indexOf(user),getItemCount());
+                        userList.remove(user);
+                        Toast.makeText (context, "You accept " +user.getEmail()+"'s friend request", Toast. LENGTH_SHORT).show();
+                        if(userList.isEmpty()){
+                            RecyclerViewMySolicitudesLists.setVisibility(View.GONE);
+                            noSolicitudes.setVisibility(View.VISIBLE);
+                        }
 
                     }
                 }, new Response.ErrorListener() {
@@ -81,13 +92,14 @@ public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.View
                 dao.deleteFriendSolicitud(user.getId(), new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        //FALTA HACER
-                        userList.remove(user);
+
                         notifyItemRemoved(userList.indexOf(user));
                         notifyItemRangeChanged(userList.indexOf(user),getItemCount());
+                        userList.remove(user);
                         Toast.makeText (context, "You declined " +user.getEmail()+"'s friend request", Toast. LENGTH_SHORT).show();
                         if(userList.isEmpty()){
-
+                            RecyclerViewMySolicitudesLists.setVisibility(View.GONE);
+                            noSolicitudes.setVisibility(View.VISIBLE);
                         }
 
                     }
@@ -120,6 +132,7 @@ public class SolicitudAdapter extends RecyclerView.Adapter<SolicitudAdapter.View
             imgFoto = itemView.findViewById(R.id.imgFoto);
             buttonAddFriend = itemView.findViewById(R.id.buttonFriendAdd);
             buttonDeleteFriend = itemView.findViewById(R.id.buttonFriendDelete);
+
 
         }
 
