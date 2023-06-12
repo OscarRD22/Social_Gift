@@ -1,5 +1,6 @@
 package com.example.social_gift.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,6 +19,8 @@ import com.android.volley.toolbox.Volley;
 import com.example.social_gift.Adapter.FriendAdapter;
 import com.example.social_gift.Adapter.UserAdapter;
 import com.example.social_gift.R;
+import com.example.social_gift.activities.ProfileActivity;
+import com.example.social_gift.activities.SolicitudesActivity;
 import com.example.social_gift.dao.Dao;
 import com.example.social_gift.model.User;
 
@@ -48,6 +51,14 @@ public class SearchFragment extends Fragment {
         RecyclerViewMyFriendsLists = view.findViewById(R.id.RecyclerViewMyFriendsLists);
         cargarAmigos(dao);
         getSolicitudes();
+        textSolicitudes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), SolicitudesActivity.class);
+                // Inicio la activity
+                startActivity(intent);
+            }
+        });
         return view;
     }
 

@@ -83,6 +83,36 @@ public class Dao {
     }
 
 
+    public void acceptFriendSolicitud(int idFriend, Response.Listener<JSONObject> acceptListerer, Response.ErrorListener errorListener) {
+        String urlAcceptFriends = url + friends + "/" + idFriend;
+        JsonObjectRequest jr = new JsonObjectRequest(Request.Method.PUT, urlAcceptFriends, null, acceptListerer, errorListener) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + loadTokenSharedPreferences(context));
+                return headers;
+            }
+        };
+        requestQueue.add(jr);
+
+    }
+
+    public void deleteFriendSolicitud(int idFriend, Response.Listener<JSONObject> acceptListerer, Response.ErrorListener errorListener) {
+        String urlAcceptFriends = url + friends + "/" + idFriend;
+        JsonObjectRequest jr = new JsonObjectRequest(Request.Method.DELETE, urlAcceptFriends, null, acceptListerer, errorListener) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + loadTokenSharedPreferences(context));
+                return headers;
+            }
+        };
+        requestQueue.add(jr);
+
+    }
+
     public void getAllUsers(Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
         String getUsersUrl = url + "/users";
 
@@ -111,7 +141,6 @@ public class Dao {
         };
         requestQueue.add(jsonArrayRequest);
     }
-
 
 
     public void getAllFriends(Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
