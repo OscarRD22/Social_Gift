@@ -9,7 +9,7 @@ Social Gift (used to manage user interactions and gifts): https://balandrau.sall
 
 Mercado Express (used to manage products): https://balandrau.salle.url.edu/i3/mercadoexpress/api-docs/v1/
 
-You can see the Figma design of the application: https://www.figma.com/file/NF7HSt4W5mREH4ZclUe1x6/GALLERY-WIREFRAME-(Copy)?ty pe=design&node-id=0%3A1&t=ZpWzqDbNkjMOCiL4-1
+You can see the Figma design of the application: https://www.figma.com/file/NF7HSt4W5mREH4ZclUe1x6/GALLERY-WIREFRAME-(Copy)?type=design&node-id=0%3A1&t=ZpWzqDbNkjMOCiL4-1
 
 
 Login:
